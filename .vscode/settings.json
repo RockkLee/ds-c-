@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "ostream": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/sheng/c++/ds-cpp/1.big-o"
 }
