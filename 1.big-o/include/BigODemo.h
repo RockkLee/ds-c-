@@ -13,6 +13,8 @@ class BigODemo
         void bigoLogN();
 
     private:
+        void binarySearch();
+        void bianrySearchTree();
 };
 
 // Add these macros for include guard, 
