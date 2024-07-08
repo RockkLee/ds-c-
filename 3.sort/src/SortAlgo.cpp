@@ -175,3 +175,59 @@ void SortAlgo::quickSort2(std::vector<int>& vec, int low, int high) {
     quickSort2(vec, low, pivot - 1);
     quickSort2(vec, pivot + 1, high);
 }
+
+/**
+ * num of nodes = n = 1 -> 1 layer
+ * num of nodes = n = 3 -> 2 layers
+ * num of nodes = n = 7 -> 3 layers
+ * ...
+ * num of nodes = n = 2^l - 1 -> l layers
+ * log2(n) = l
+ * 
+ * In other words, swapping from the root to the last node takes log2(n) steps -> O(logn)
+ */
+void SortAlgo::maxHeapify(int idxCurParent, int idxLastNode, std::vector<int>& vec) {
+    //The index of the current node's left child and right child 
+    int lChild = idxCurParent * 2 + 1;
+    int rChild = idxCurParent * 2 + 2;
+
+    //the index of the largest element compared to the current node and its adjacent left and right child nodes
+    int largest = idxCurParent;
+    if (lChild <= idxLastNode && vec[lChild] > vec[largest])
+        largest = lChild;
+    if (rChild <= idxLastNode && vec[rChild] > vec[largest])
+        largest = rChild;
+    
+    //Keep swapping if the largest is not the current node (current parent node)
+    if (largest != idxCurParent) {
+        std::swap(vec[idxCurParent], vec[largest]);
+        //Recursively heapify the affected sub-tree from either the left or right child of the current node
+        maxHeapify(largest, idxLastNode, vec);
+    }   
+}
+/**
+ * Iterate from the parent of the last node to the root -> n/2 -> O(n)
+ */
+void SortAlgo::buildMaxHeap(std::vector<int>& vec) {
+    //The index of the last node's parent
+    int idxLastNode = vec.size() - 1;
+    int idxLastNodeParent = idxLastNode / 2;
+    for (int i = idxLastNodeParent; i >=0; i--) {
+        maxHeapify(i, idxLastNode, vec);
+    }
+}
+/**
+ * Heap sort: O(nlogn)
+ * buildMaxHeap: O(n)
+ * maxHeapify: O(logn)
+ * buildMaxHeap * maxHeapify: O(nlogn)
+ */
+void SortAlgo::heapSort(std::vector<int>& vec) {
+    buildMaxHeap(vec);
+
+    //keep popping out the largest element (first node) and replace it with the last element in the heap
+    for (int i = vec.size() - 1; i > 0; i--) {
+        std::swap(vec[0], vec[i]);
+        maxHeapify(0, i - 1, vec);
+    }
+}

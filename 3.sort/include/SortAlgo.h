@@ -14,6 +14,10 @@ class SortAlgo {
 private:
     //for merge sort
     std::vector<int> merge(std::vector<int>, std::vector<int>);
+
+    //for heap sort
+    void buildMaxHeap(std::vector<int>&);
+    void maxHeapify(int, int, std::vector<int>&);
 public:
     SortAlgo();
 
@@ -22,6 +26,7 @@ public:
     std::vector<int> mergeSort(std::vector<int>);
     std::vector<int> quickSort(std::vector<int>);
     void quickSort2(std::vector<int>&, int, int);
+    void heapSort(std::vector<int>&);
 
 };
 
