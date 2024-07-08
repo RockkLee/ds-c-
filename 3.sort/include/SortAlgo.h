@@ -4,12 +4,6 @@
 #include <iostream>
 #include <vector>
 
-struct QuickSortStruct {
-    std::vector<int> lessPart;
-    std::vector<int> greaterPart;
-};
-
-
 class SortAlgo {
 private:
     //for merge sort

@@ -14,23 +14,12 @@ SortAlgo::SortAlgo() {
  * 3. If the adjacent elements are in wrong order, swap them
  */
 std::vector<int> SortAlgo::bubbleSort(std::vector<int> vec) {
-    std::cout << "bubbleSort:" << std::endl;
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, ", "));
-    std::cout << std::endl;
-    
     for (int i = 0; i < vec.size(); i++) {
         for (int j = 0; j < vec.size() - 1; j++) {
-            if (vec[j] > vec[j + 1]) {
-                int temp = vec[j];
-                vec[j] = vec[j + 1];
-                vec[j + 1] = temp;
-            }
+            if (vec[j] > vec[j + 1])
+                std::swap(vec[j], vec[j + 1]);
         }
     }
-    
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, ", "));
-    std::cout << std::endl;
-    
     return vec;
 }
 
@@ -41,25 +30,14 @@ std::vector<int> SortAlgo::bubbleSort(std::vector<int> vec) {
  * 3. Sort the elements that are on the left of the pointer
  */
 std::vector<int> SortAlgo::insertionSort(std::vector<int> vec) {
-    std::cout << "insertionSort:" << std::endl;
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, ", "));
-    std::cout << std::endl;
-    
     for (int i = 1; i < vec.size(); i++) {
         int j = i - 1;
         while (j >= 0) {
-            if (vec[j] > vec[j + 1]) {
-                int temp = vec[j];
-                vec[j] = vec[j + 1];
-                vec[j + 1] = temp;
-            }
+            if (vec[j] > vec[j + 1])
+                std::swap(vec[j], vec[j + 1]);
             j--;
         }
     }
-    
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, ", "));
-    std::cout << std::endl;
-    
     return vec;
 }
 

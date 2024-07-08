@@ -17,9 +17,9 @@ int main(int, char**){
     // vec = sortAlgo.bubbleSort(vec);
     // vec = sortAlgo.insertionSort(vec);
     // vec = sortAlgo.mergeSort(vec);
-    // vec = sortAlgo.quickSort(vec);
+    vec = sortAlgo.quickSort(vec);
     // sortAlgo.quickSort2(vec, 0, vec.size() - 1);
-    sortAlgo.heapSort(vec);
+    // sortAlgo.heapSort(vec);
 
     std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, ", "));
     std::cout << std::endl;
