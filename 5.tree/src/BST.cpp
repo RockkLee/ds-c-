@@ -28,7 +28,7 @@ void BST::insert(std::shared_ptr<Node> target) {
     }
 }
 
-// left, root, right
+// root, left, right
 void BST::preOrder(std::shared_ptr<Node> cur) {
     if (cur == nullptr) {
         return;
@@ -38,7 +38,7 @@ void BST::preOrder(std::shared_ptr<Node> cur) {
     preOrder(cur->right);
 }
 
-// root, left, right
+// left, root, right
 void BST::inOrder(std::shared_ptr<Node> cur) {
     if (cur == nullptr) {
         return;
